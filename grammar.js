@@ -9,7 +9,7 @@
 module.exports = grammar({
   name: "sylmark",
 
-  extras: ($) => [/\s+/],
+  extras: () => [/\s+/],
 
   rules: {
     document: ($) =>
