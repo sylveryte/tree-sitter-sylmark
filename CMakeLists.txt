@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 project(tree-sitter-sylmark
         VERSION "0.1.0"
         DESCRIPTION "Markdown parser for sylmark lsp"
-        HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-sylmark"
+        HOMEPAGE_URL "https://github.com/sylveryte/tree-sitter-sylmark"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)

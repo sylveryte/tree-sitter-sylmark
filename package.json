@@ -2,7 +2,7 @@
   "name": "tree-sitter-sylmark",
   "version": "0.1.0",
   "description": "Markdown parser for sylmark lsp",
-  "repository": "https://github.com/tree-sitter/tree-sitter-sylmark",
+  "repository": "https://github.com/sylveryte/tree-sitter-sylmark",
   "license": "MIT",
   "author": {
     "name": "Sandeep Sahani",

@@ -19,7 +19,7 @@ license.text = "MIT"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/tree-sitter/tree-sitter-sylmark"
+Homepage = "https://github.com/sylveryte/tree-sitter-sylmark"
 
 [project.optional-dependencies]
 core = ["tree-sitter~=0.24"]
