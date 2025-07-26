@@ -30,6 +30,10 @@
         ]
       }
     },
+    "title": {
+      "type": "PATTERN",
+      "value": "[^\\n\\r]*"
+    },
     "heading": {
       "type": "SEQ",
       "members": [
@@ -53,8 +57,8 @@
           "type": "FIELD",
           "name": "title",
           "content": {
-            "type": "PATTERN",
-            "value": "[^\\n\\r]*"
+            "type": "SYMBOL",
+            "name": "title"
           }
         },
         {
@@ -71,6 +75,74 @@
         }
       ]
     },
+    "url": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^)\\n]"
+            },
+            {
+              "type": "STRING",
+              "value": "\\)"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^)\\n]"
+              },
+              {
+                "type": "STRING",
+                "value": "\\)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "urltext": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^\\]]"
+            },
+            {
+              "type": "STRING",
+              "value": "\\]"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\\]]"
+              },
+              {
+                "type": "STRING",
+                "value": "\\]"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "link": {
       "type": "SEQ",
       "members": [
@@ -82,20 +154,8 @@
           "type": "FIELD",
           "name": "text",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[^\\]]"
-                },
-                {
-                  "type": "STRING",
-                  "value": "\\]"
-                }
-              ]
-            }
+            "type": "SYMBOL",
+            "name": "urltext"
           }
         },
         {
@@ -110,34 +170,47 @@
           "type": "FIELD",
           "name": "url",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[^)\\n]"
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "\\)"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "\n"
-                    }
-                  ]
-                }
-              ]
-            }
+            "type": "SYMBOL",
+            "name": "url"
           }
         },
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "wikitarget": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^]\\n]"
+            },
+            {
+              "type": "STRING",
+              "value": "\\]"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^]\\n]"
+              },
+              {
+                "type": "STRING",
+                "value": "\\]"
+              }
+            ]
+          }
         }
       ]
     },
@@ -152,20 +225,8 @@
           "type": "FIELD",
           "name": "target",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[^]\\n]"
-                },
-                {
-                  "type": "STRING",
-                  "value": "\\]"
-                }
-              ]
-            }
+            "type": "SYMBOL",
+            "name": "wikitarget"
           }
         },
         {

@@ -34,53 +34,75 @@
   {
     "type": "heading",
     "named": true,
-    "fields": {}
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "title",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "link",
     "named": true,
     "fields": {
       "text": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
-            "type": "\\]",
-            "named": false
+            "type": "urltext",
+            "named": true
           }
         ]
       },
       "url": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": "\\)",
-            "named": false
+            "type": "url",
+            "named": true
           }
         ]
       }
     }
   },
   {
+    "type": "url",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "urltext",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "wikilink",
     "named": true,
     "fields": {
       "target": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
-            "type": "\\]",
-            "named": false
+            "type": "wikitarget",
+            "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "wikitarget",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "\n",
@@ -124,6 +146,10 @@
   },
   {
     "type": "text",
+    "named": true
+  },
+  {
+    "type": "title",
     "named": true
   }
 ]

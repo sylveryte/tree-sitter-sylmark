@@ -15,26 +15,23 @@ module.exports = grammar({
     document: ($) =>
       repeat(choice($.heading, $.link, $.wikilink, $.tag, $.text)),
 
-    heading: () =>
+    title: () => /[^\n\r]*/,
+    heading: ($) =>
+      seq(/[#]{1,6}/, optional(/\s+/), field("title", $.title), optional("\n")),
+
+    url: () =>
       seq(
-        /[#]{1,6}/,
-        optional(/\s+/),
-        field("title", /[^\n\r]*/),
-        optional("\n"),
+        choice(/[^)\n]/, "\\)"), // match one or more characters
+        repeat(choice(/[^)\n]/, "\\)")), // zero or more characters after
       ),
 
-    link: () =>
-      seq(
-        "[",
-        field("text", repeat(choice(/[^\]]/, "\\]"))),
-        "]",
-        "(",
-        field("url", repeat(choice(/[^)\n]/, choice("\\)", "\n")))),
-        ")",
-      ),
+    urltext: () => seq(choice(/[^\]]/, "\\]"), repeat(choice(/[^\]]/, "\\]"))),
+    link: ($) =>
+      seq("[", field("text", $.urltext), "]", "(", field("url", $.url), ")"),
 
-    wikilink: () =>
-      seq("[[", field("target", repeat(choice(/[^]\n]/, "\\]"))), "]]"),
+    wikitarget: () =>
+      seq(choice(/[^]\n]/, "\\]"), repeat(choice(/[^]\n]/, "\\]"))),
+    wikilink: ($) => seq("[[", field("target", $.wikitarget), "]]"),
 
     tag: () => token(seq("#", /[a-zA-Z0-9_]+/)),
 
