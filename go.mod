@@ -1,4 +1,4 @@
-module github.com/sylveryte/tree-sitter-sylmark
+module codeberg.org/sylveryte/tree-sitter-sylmark
 
 go 1.22
 
