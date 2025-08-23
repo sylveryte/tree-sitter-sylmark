@@ -13,11 +13,23 @@ module.exports = grammar({
 
   rules: {
     document: ($) =>
-      repeat(choice($.heading, $.link, $.wikilink, $.tag, $.text)),
+      repeat(
+        choice(
+          $.heading,
+          $.link,
+          $.wikilink,
+          $.tag,
+          $.comment,
+          $.inline_code,
+          $.fenced_code_block,
+          $.text,
+        ),
+      ),
 
     title: () => /[^\n\r]*/,
     heading: ($) =>
       seq(/[#]{1,6}/, optional(/\s+/), field("title", $.title), optional("\n")),
+    // heading: () => token(seq(/(?:^|\n)#{1,6}/, /\s*/, /[^\n\r]*/)),
 
     url: () =>
       seq(
@@ -35,6 +47,12 @@ module.exports = grammar({
 
     tag: () => token(seq("#", /[a-zA-Z0-9_]+/)),
 
-    text: () => token.immediate(/[^#\[\]\[\]]+/),
+    comment: () => token(prec(1, /<!--[\s\S]*?-->/)),
+
+    inline_code: () => token(prec(1, /`[^`\n]*`/)),
+
+    fenced_code_block: () => token(prec(1, /```[\s\S]*?```/)),
+
+    text: () => token(/[^\s#\[\]\[\]`<]+/),
   },
 });

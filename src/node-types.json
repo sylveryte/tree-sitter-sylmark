@@ -9,7 +9,19 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "fenced_code_block",
+          "named": true
+        },
+        {
           "type": "heading",
+          "named": true
+        },
+        {
+          "type": "inline_code",
           "named": true
         },
         {
@@ -139,6 +151,18 @@
   {
     "type": "]]",
     "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "fenced_code_block",
+    "named": true
+  },
+  {
+    "type": "inline_code",
+    "named": true
   },
   {
     "type": "tag",

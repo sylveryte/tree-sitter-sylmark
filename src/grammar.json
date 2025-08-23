@@ -1,6 +1,6 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
-  "name": "sylmark",
+  "name": "jilo",
   "rules": {
     "document": {
       "type": "REPEAT",
@@ -22,6 +22,18 @@
           {
             "type": "SYMBOL",
             "name": "tag"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "inline_code"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "fenced_code_block"
           },
           {
             "type": "SYMBOL",
@@ -251,11 +263,44 @@
         ]
       }
     },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "<!--[\\s\\S]*?-->"
+        }
+      }
+    },
+    "inline_code": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "`[^`\\n]*`"
+        }
+      }
+    },
+    "fenced_code_block": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "```[\\s\\S]*?```"
+        }
+      }
+    },
     "text": {
-      "type": "IMMEDIATE_TOKEN",
+      "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[^#\\[\\]\\[\\]]+"
+        "value": "[^\\s#\\[\\]\\[\\]`<]+"
       }
     }
   },
