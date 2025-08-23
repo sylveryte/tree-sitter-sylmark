@@ -29,7 +29,6 @@ module.exports = grammar({
     title: () => /[^\n\r]*/,
     heading: ($) =>
       seq(/[#]{1,6}/, optional(/\s+/), field("title", $.title), optional("\n")),
-    // heading: () => token(seq(/(?:^|\n)#{1,6}/, /\s*/, /[^\n\r]*/)),
 
     url: () =>
       seq(
