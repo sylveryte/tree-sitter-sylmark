@@ -50,8 +50,6 @@ module.exports = grammar({
 
     inline_code: () => token(prec(1, /`[^`\n]*`/)),
 
-    // fenced_code_block: () => token(prec(1, /```[\s\S]*?```/)),
-    // fenced_code_block: () => token(prec(1, /```(?:[^`]|`(?!``))*```/)),
     fenced_code_block: () => token(prec(1, /```[^`]*([\n\r][^`]*?)*```/)),
 
     text: () => token(/[^\s#\[\]\[\]`<]+/),
