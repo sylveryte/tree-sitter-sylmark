@@ -413,16 +413,16 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\n') ADVANCE(13);
       END_STATE();
     case 14:
-      if (lookahead == '`') ADVANCE(52);
-      if (lookahead != 0) ADVANCE(16);
+      if (lookahead == '`') ADVANCE(16);
+      if (lookahead == '\n' ||
+          lookahead == '\r') ADVANCE(14);
+      if (lookahead != 0) ADVANCE(14);
       END_STATE();
     case 15:
-      if (lookahead == '`') ADVANCE(14);
-      if (lookahead != 0) ADVANCE(16);
+      if (lookahead == '`') ADVANCE(52);
       END_STATE();
     case 16:
       if (lookahead == '`') ADVANCE(15);
-      if (lookahead != 0) ADVANCE(16);
       END_STATE();
     case 17:
       if (eof) ADVANCE(19);
@@ -583,12 +583,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 51:
       ACCEPT_TOKEN(sym_inline_code);
-      if (lookahead == '`') ADVANCE(16);
+      if (lookahead == '`') ADVANCE(14);
       END_STATE();
     case 52:
       ACCEPT_TOKEN(sym_fenced_code_block);
-      if (lookahead == '`') ADVANCE(52);
-      if (lookahead != 0) ADVANCE(16);
       END_STATE();
     case 53:
       ACCEPT_TOKEN(sym_text);
