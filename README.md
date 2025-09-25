@@ -1,4 +1,4 @@
-Note: Github has mirror original repo on [codeberg](https://codeberg.org/sylveryte/tree-sitter-sylmark)
+Note: Github is mirror, original repo on [codeberg](https://codeberg.org/sylveryte/tree-sitter-sylmark)
 
 # Sylmark Tree-sitter Grammar
 
@@ -8,7 +8,7 @@ Note: Github has mirror original repo on [codeberg](https://codeberg.org/sylvery
 
 ## Bugs
 
-- [ ] Recoginises heading even when it's in between text
+- [ ] Recognises heading even when it's in between text
   - This issue is however fixed in it's [sylmark](https://codeberg.org/sylveryte/sylmark)
 
 ```markdown
