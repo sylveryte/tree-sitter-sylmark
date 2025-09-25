@@ -1,3 +1,5 @@
+Note: Github has mirror original repo on [codeberg](https://codeberg.org/sylveryte/tree-sitter-sylmark)
+
 # Sylmark Tree-sitter Grammar
 
 - This grammar is written for markdown files specifically to
@@ -6,19 +8,9 @@
 
 ## Bugs
 
-- [ ] only 1 heading is recognized
+- [ ] Recoginises heading even when it's in between text
+  - This issue is however fixed in it's [sylmark](https://codeberg.org/sylveryte/sylmark)
 
-### first heading
-
-```typescript
-somethint;
+```markdown
+some text # not actual heading but recognised
 ```
-
-### second heading
-
-```typescript
-somethint;
-```
-
-- [ ] old norg links are creating error
-      if md contains {https://lksajdf}[link]
